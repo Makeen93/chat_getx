@@ -2,7 +2,8 @@ import 'package:chat_getx/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../routes/app_routes.dart';
+import '../controllers/auth_controller.dart';
+import '../routes/app_routes.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -38,20 +39,20 @@ class _SplashViewState extends State<SplashView>
       ),
     );
     _animationController.forward();
-    // _checkAuthAndNavigate();
+    _checkAuthAndNavigate();
   }
 
-  // void _checkAuthAndNavigate() async {
-  //   await Future.delayed(const Duration(seconds: 2));
-  //   final authController = Get.put(AuthController(), permanent: true);
-  //   await Future.delayed(const Duration(microseconds: 500));
+  void _checkAuthAndNavigate() async {
+    await Future.delayed(const Duration(seconds: 2));
+    final authController = Get.put(AuthController(), permanent: true);
+    await Future.delayed(const Duration(microseconds: 500));
 
-  //   if (authController.isAuthenticated) {
-  //     Get.offAllNamed(AppRoutes.main);
-  //   } else {
-  //     Get.offAllNamed(AppRoutes.login);
-  //   }
-  // }
+    if (authController.isAuthenticated) {
+      Get.offAllNamed(AppRoutes.main);
+    } else {
+      Get.offAllNamed(AppRoutes.login);
+    }
+  }
 
   @override
   void dispose() {

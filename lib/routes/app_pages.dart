@@ -2,7 +2,9 @@ import 'package:chat_getx/routes/app_routes.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 
-import '../views/auth/splash_view.dart';
+import '../views/auth/login_view.dart';
+import '../views/auth/register_view.dart';
+import '../views/splash_view.dart';
 
 class AppPages {
   static const initial = AppRoutes.splash;
@@ -15,20 +17,20 @@ class AppPages {
       //   Get.put<SplashController>(SplashController());
       // },
     ),
-    // GetPage(
-    //   name: AppRoutes.login,
-    //   page: () => LoginView(),
-    //   binding: BindingsBuilder(){
-    //     Get.put<LoginController>(LoginController());
-    //   },
-    // ),
-    // GetPage(
-    //   name: AppRoutes.register,
-    //   page: () => RegisterView(),
-    //   binding: BindingsBuilder(){
-    //     Get.put<RegisterController>(RegisterController());
-    //   },
-    // ),
+    GetPage(
+      name: AppRoutes.login,
+      page: () => const LoginView(),
+      // binding: BindingsBuilder(){
+      //   Get.put<LoginController>(LoginController());
+      // },
+    ),
+    GetPage(
+      name: AppRoutes.register,
+      page: () => const RegisterView(),
+      // binding: BindingsBuilder(){
+      //   Get.put<RegisterController>(RegisterController());
+      // },
+    ),
     // GetPage(
     //   name: AppRoutes.forgetPassword,
     //   page: () => ForgetPasswordView(),
