@@ -2,6 +2,7 @@ import 'package:chat_getx/routes/app_routes.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 
+import '../views/auth/forget_password_view.dart';
 import '../views/auth/login_view.dart';
 import '../views/auth/register_view.dart';
 import '../views/splash_view.dart';
@@ -31,14 +32,13 @@ class AppPages {
       //   Get.put<RegisterController>(RegisterController());
       // },
     ),
-    // GetPage(
-    //   name: AppRoutes.forgetPassword,
-    //   page: () => ForgetPasswordView(),
-    //   binding: BindingsBuilder(){
-    //     Get.put<ForgetPasswordController>(ForgetPasswordController());
-    //   },
-
-    // ),
+    GetPage(
+      name: AppRoutes.forgetPassword,
+      page: () => const ForgetPasswordView(),
+      // binding: BindingsBuilder(){
+      //   Get.put<ForgetPasswordController>(ForgetPasswordController());
+      // },
+    ),
     // GetPage(
     //   name: AppRoutes.changePassword,
     //   page: () => ChangePasswordView(),

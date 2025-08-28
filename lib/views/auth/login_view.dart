@@ -177,34 +177,31 @@ class _LoginViewState extends State<LoginView> {
                       child: Divider(
                     color: AppTheme.borderColor,
                   )),
-                  const SizedBox(
-                    height: 32,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text("Don't have an account?",
-                          style: Theme.of(context).textTheme.bodyMedium),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      GestureDetector(
-                          onTap: () {
-                            Get.toNamed(AppRoutes.register);
-                          },
-                          child: Text(
-                            'Sign Up',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium
-                                ?.copyWith(
-                                    color: AppTheme.primaryColor,
-                                    fontWeight: FontWeight.w600),
-                          )),
-                    ],
-                  )
                 ],
               ),
+              const SizedBox(
+                height: 32,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Don't have an account?",
+                      style: Theme.of(context).textTheme.bodyMedium),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  GestureDetector(
+                      onTap: () {
+                        Get.toNamed(AppRoutes.register);
+                      },
+                      child: Text(
+                        'Sign Up',
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            color: AppTheme.primaryColor,
+                            fontWeight: FontWeight.w600),
+                      )),
+                ],
+              )
             ])),
       ),
     )));

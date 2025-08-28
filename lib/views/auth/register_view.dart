@@ -215,35 +215,32 @@ class _RegisterViewState extends State<RegisterView> {
                       child: Divider(
                     color: AppTheme.borderColor,
                   )),
-                  const SizedBox(
-                    height: 32,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text("Already have an account?",
-                          style: Theme.of(context).textTheme.bodyMedium),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      GestureDetector(
-                          onTap: () {
-                            // Get.back();
-                            Get.toNamed(AppRoutes.login);
-                          },
-                          child: Text(
-                            ' Sign In',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium
-                                ?.copyWith(
-                                    color: AppTheme.primaryColor,
-                                    fontWeight: FontWeight.w600),
-                          )),
-                    ],
-                  )
                 ],
               ),
+              const SizedBox(
+                height: 32,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Already have an account?",
+                      style: Theme.of(context).textTheme.bodyMedium),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  GestureDetector(
+                      onTap: () {
+                        // Get.back();
+                        Get.toNamed(AppRoutes.login);
+                      },
+                      child: Text(
+                        ' Sign In',
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            color: AppTheme.primaryColor,
+                            fontWeight: FontWeight.w600),
+                      )),
+                ],
+              )
             ])),
       ),
     )));
