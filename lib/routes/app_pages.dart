@@ -1,12 +1,15 @@
+import 'package:chat_getx/controllers/forget_password_controller.dart';
 import 'package:chat_getx/routes/app_routes.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 
+import '../controllers/change_password_controller.dart';
 import '../controllers/profile_controller.dart';
 import '../views/auth/forget_password_view.dart';
 import '../views/auth/login_view.dart';
 import '../views/auth/register_view.dart';
-import '../views/profile_view.dart';
+import '../views/profile/change_password_view.dart';
+import '../views/profile/profile_view.dart';
 import '../views/splash_view.dart';
 
 class AppPages {
@@ -37,17 +40,17 @@ class AppPages {
     GetPage(
       name: AppRoutes.forgetPassword,
       page: () => const ForgetPasswordView(),
-      // binding: BindingsBuilder(){
-      //   Get.put<ForgetPasswordController>(ForgetPasswordController());
-      // },
+      binding: BindingsBuilder(() {
+        Get.put<ForgetPasswordController>(ForgetPasswordController());
+      }),
     ),
-    // GetPage(
-    //   name: AppRoutes.changePassword,
-    //   page: () => ChangePasswordView(),
-    //   binding: BindingsBuilder(){
-    //     Get.put<ChangePasswordController>(ChangePasswordController());
-    //   },
-    // ),
+    GetPage(
+      name: AppRoutes.changePassword,
+      page: () => const ChangePasswordView(),
+      binding: BindingsBuilder(() {
+        Get.put<ChangePasswordController>(ChangePasswordController());
+      }),
+    ),
     // GetPage(
     //   name: AppRoutes.home,
     //   page: () => HomeView(),

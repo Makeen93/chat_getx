@@ -1,10 +1,11 @@
+import 'package:chat_getx/routes/app_routes.dart';
 import 'package:chat_getx/theme/app_theme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
-import '../controllers/profile_controller.dart';
+import '../../controllers/profile_controller.dart';
 
 class ProfileView extends GetView<ProfileController> {
   const ProfileView({super.key});
@@ -223,7 +224,7 @@ class ProfileView extends GetView<ProfileController> {
                       title: const Text('Change Password'),
                       trailing: const Icon(Icons.arrow_forward_ios),
                       onTap: () {
-                        Get.toNamed('/change-password');
+                        Get.toNamed(AppRoutes.changePassword);
                       },
                     ),
                     const Divider(height: 1, color: Colors.grey),
