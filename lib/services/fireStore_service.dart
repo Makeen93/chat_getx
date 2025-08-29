@@ -12,6 +12,7 @@ class FireStoreService {
       throw Exception('Failed to create user: ${e.toString()}');
     }
   }
+
   Future<UserModel?> getUser(String userId) async {
     try {
       DocumentSnapshot doc =
@@ -24,24 +25,44 @@ class FireStoreService {
       throw Exception('Failed to get user: ${e.toString()}');
     }
   }
+
   Future<void> updateUserOnlineStatus(String userId, bool isOnline) async {
     try {
-     DocumentSnapshot doc= await _firestore.collection('users').doc(userId).  get(); 
-      if(doc.exists){
+      DocumentSnapshot doc =
+          await _firestore.collection('users').doc(userId).get();
+      if (doc.exists) {
         await _firestore.collection('users').doc(userId).update({
           'isOnline': isOnline,
-          'lastSeen': DateTime.now().millisecondsSinceEpoch,
+          'lastSeen': DateTime.now(),
         });
       }
     } catch (e) {
       throw Exception('Failed to update user status: ${e.toString()}');
     }
   }
-  Future <void> deleteUser(String userId) async {
+
+  Future<void> deleteUser(String userId) async {
     try {
       await _firestore.collection('users').doc(userId).delete();
     } catch (e) {
       throw Exception('Failed to delete user: ${e.toString()}');
+    }
+  }
+
+  Stream<UserModel?> getUserStream(String userId) {
+    return _firestore.collection('users').doc(userId).snapshots().map((doc) {
+      if (doc.exists) {
+        return UserModel.fromMap(doc.data() as Map<String, dynamic>);
+      }
+      return null;
+    });
+  }
+
+  Future<void> updateUser(UserModel user) async {
+    try {
+      await _firestore.collection('users').doc(user.id).update(user.toMap());
+    } catch (e) {
+      throw Exception('Failed to update user profile: ${e.toString()}');
     }
   }
 }

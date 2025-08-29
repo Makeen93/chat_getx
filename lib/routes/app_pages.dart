@@ -2,9 +2,11 @@ import 'package:chat_getx/routes/app_routes.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 
+import '../controllers/profile_controller.dart';
 import '../views/auth/forget_password_view.dart';
 import '../views/auth/login_view.dart';
 import '../views/auth/register_view.dart';
+import '../views/profile_view.dart';
 import '../views/splash_view.dart';
 
 class AppPages {
@@ -60,13 +62,13 @@ class AppPages {
     //     Get.put<MainController>(MainController());
     //   },
     // ),
-    // GetPage(
-    //   name: AppRoutes.profile,
-    //   page: () => ProfileView(),
-    //   binding: BindingsBuilder(){
-    //     Get.put<ProfileController>(ProfileController());
-    //   },
-    // ),
+    GetPage(
+      name: AppRoutes.profile,
+      page: () => const ProfileView(),
+      binding: BindingsBuilder(() {
+        Get.put<ProfileController>(ProfileController());
+      }),
+    ),
     // GetPage(
     //   name: AppRoutes.chat,
     //   page: () => ChatView(),
