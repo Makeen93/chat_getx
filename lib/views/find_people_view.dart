@@ -33,7 +33,7 @@ class FindPeopleView extends GetView<UsersListController> {
                         controller: controller);
                   },
                   separatorBuilder: (context, index) {
-                    return SizedBox(
+                    return const SizedBox(
                       height: 8,
                     );
                   },
@@ -121,13 +121,14 @@ class FindPeopleView extends GetView<UsersListController> {
           ),
           const SizedBox(height: 8),
           Text(
-              controller.searchQuery.isNotEmpty
-                  ? 'Try a different search term.'
-                  : 'All users will show here.',
-              style: Theme.of(Get.context!).textTheme.bodyMedium?.copyWith(
-                    color: AppTheme.textPrimaryColor,
-                  )),
-          const SizedBox(height: 8),
+            controller.searchQuery.isNotEmpty
+                ? 'Try a different search term.'
+                : 'All users will show here.',
+            style: Theme.of(Get.context!).textTheme.bodyMedium?.copyWith(
+                  color: AppTheme.textPrimaryColor,
+                ),
+            textAlign: TextAlign.center,
+          ),
         ],
       ),
     );

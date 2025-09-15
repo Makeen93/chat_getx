@@ -1,6 +1,7 @@
 import 'package:chat_getx/controllers/main_controller.dart';
 import 'package:chat_getx/theme/app_theme.dart';
 import 'package:chat_getx/views/find_people_view.dart';
+import 'package:chat_getx/views/friends_view.dart';
 import 'package:chat_getx/views/profile/profile_view.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,7 @@ class MainView extends GetView<MainController> {
           // FriendsView(),
           // UsersListView(),
           Container(),
-          Container(),
+          const FriendsView(),
           const FindPeopleView(),
           const ProfileView()
         ],

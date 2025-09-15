@@ -1,11 +1,15 @@
 import 'package:chat_getx/controllers/forget_password_controller.dart';
+import 'package:chat_getx/controllers/friends_controller.dart';
 import 'package:chat_getx/routes/app_routes.dart';
+import 'package:chat_getx/views/find_people_view.dart';
+import 'package:chat_getx/views/friends_view.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 
 import '../controllers/change_password_controller.dart';
 import '../controllers/main_controller.dart';
 import '../controllers/profile_controller.dart';
+import '../controllers/users_list_controller.dart';
 import '../views/auth/forget_password_view.dart';
 import '../views/auth/login_view.dart';
 import '../views/auth/register_view.dart';
@@ -81,20 +85,20 @@ class AppPages {
     //     Get.put<ChatController>(ChatController());
     //   },
     // ),
-    // GetPage(
-    //   name: AppRoutes.usersList,
-    //   page: () => UsersListView(),
-    //   binding: BindingsBuilder(){
-    //     Get.put<UsersListController>(UsersListController());
-    //   },
-    // ),
-    // GetPage(
-    //   name: AppRoutes.frinds,
-    //   page: () => FrindsView(),
-    //   binding: BindingsBuilder(){
-    //     Get.put<FrindsController>(FrindsController());
-    //   },
-    // ),
+    GetPage(
+      name: AppRoutes.usersList,
+      page: () => const FindPeopleView(),
+      binding: BindingsBuilder(() {
+        Get.put<UsersListController>(UsersListController());
+      }),
+    ),
+    GetPage(
+      name: AppRoutes.frinds,
+      page: () => const FriendsView(),
+      binding: BindingsBuilder(() {
+        Get.put<FriendsController>(FriendsController());
+      }),
+    ),
     // GetPage(
     //   name: AppRoutes.frindRequests,
     //   page: () => FrindRequestsView(),
