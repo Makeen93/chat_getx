@@ -1,3 +1,4 @@
+import 'package:chat_getx/routes/app_routes.dart';
 import 'package:chat_getx/theme/app_theme.dart';
 import 'package:chat_getx/views/widgets/friend_list_item.dart';
 import 'package:flutter/material.dart';
