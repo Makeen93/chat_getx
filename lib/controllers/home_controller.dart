@@ -158,20 +158,20 @@ class HomeController extends GetxController {
 
   void clearAllFilters() {
     _activeFilter.value = 'All';
-    _clearSearch();
+    clearSearch();
   }
 
   void onSearchChanged(String query) {
     _searchQuery.value = query;
     if (query.isEmpty) {
-      _clearSearch();
+      clearSearch();
     } else {
       _isSearching.value = true;
       _performSearch;
     }
   }
 
-  void _clearSearch() {
+  void clearSearch() {
     _isSearching.value = false;
     _searchQuery.value = '';
     _filteredChats.clear();

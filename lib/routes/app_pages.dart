@@ -5,10 +5,12 @@ import 'package:chat_getx/routes/app_routes.dart';
 import 'package:chat_getx/views/find_people_view.dart';
 import 'package:chat_getx/views/friend_request_view.dart';
 import 'package:chat_getx/views/friends_view.dart';
+import 'package:chat_getx/views/home_view.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 
 import '../controllers/change_password_controller.dart';
+import '../controllers/home_controller.dart';
 import '../controllers/main_controller.dart';
 import '../controllers/profile_controller.dart';
 import '../controllers/users_list_controller.dart';
@@ -59,13 +61,13 @@ class AppPages {
         Get.put<ChangePasswordController>(ChangePasswordController());
       }),
     ),
-    // GetPage(
-    //   name: AppRoutes.home,
-    //   page: () => HomeView(),
-    //   binding: BindingsBuilder(){
-    //     Get.put<HomeController>(HomeController());
-    //   },
-    // ),
+    GetPage(
+      name: AppRoutes.home,
+      page: () => const HomeView(),
+      binding: BindingsBuilder(() {
+        Get.put<HomeController>(HomeController());
+      }),
+    ),
     GetPage(
       name: AppRoutes.main,
       page: () => const MainView(),
