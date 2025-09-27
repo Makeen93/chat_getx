@@ -1,11 +1,13 @@
 import 'package:chat_getx/controllers/forget_password_controller.dart';
 import 'package:chat_getx/controllers/friend_requests_controller.dart';
 import 'package:chat_getx/controllers/friends_controller.dart';
+import 'package:chat_getx/controllers/notification_controller.dart';
 import 'package:chat_getx/routes/app_routes.dart';
 import 'package:chat_getx/views/find_people_view.dart';
 import 'package:chat_getx/views/friend_request_view.dart';
 import 'package:chat_getx/views/friends_view.dart';
 import 'package:chat_getx/views/home_view.dart';
+import 'package:chat_getx/views/notification_view.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 
@@ -110,12 +112,12 @@ class AppPages {
         Get.put<FriendRequestsController>(FriendRequestsController());
       }),
     ),
-    // GetPage(
-    //   name: AppRoutes.notifications,
-    //   page: () => NotificationsView(),
-    //   binding: BindingsBuilder(){
-    //     Get.put<NotificationsController>(NotificationsController());
-    //   },
-    // ),
+    GetPage(
+      name: AppRoutes.notifications,
+      page: () => const NotificationView(),
+      binding: BindingsBuilder(() {
+        Get.put<NotificationController>(NotificationController());
+      }),
+    ),
   ];
 }
