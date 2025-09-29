@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class FriendRequestsController extends GetxController {
-  final FireStoreService _fireStoreService = Get.find<FireStoreService>();
+  final FireStoreService _fireStoreService = FireStoreService();
   final AuthController _authController = Get.find<AuthController>();
   final RxList<FriendRequestModel> _receivedRequests =
       <FriendRequestModel>[].obs;

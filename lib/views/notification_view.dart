@@ -14,7 +14,7 @@ class NotificationView extends GetView<NotificationController> {
       appBar: AppBar(
         title: const Text('Notificaions'),
         leading: IconButton(
-            onPressed: () => Get.back, icon: const Icon(Icons.arrow_back)),
+            onPressed: () => Get.back(), icon: const Icon(Icons.arrow_back)),
         actions: [
           Obx(
             () {

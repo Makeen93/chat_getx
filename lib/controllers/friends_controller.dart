@@ -4,14 +4,12 @@ import 'package:chat_getx/controllers/auth_controller.dart';
 import 'package:chat_getx/models/friendship_model.dart';
 import 'package:chat_getx/models/user_model.dart';
 import 'package:chat_getx/routes/app_routes.dart';
-import 'package:chat_getx/services/auth_service.dart';
 import 'package:chat_getx/services/fireStore_service.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
 class FriendsController extends GetxController {
-  final FireStoreService _fireStoreService = Get.find<FireStoreService>();
+  final FireStoreService _fireStoreService = FireStoreService();
   final AuthController _authController = Get.find<AuthController>();
   final RxList<FriendshipModel> _friendships = <FriendshipModel>[].obs;
   final RxList<UserModel> _friends = <UserModel>[].obs;
