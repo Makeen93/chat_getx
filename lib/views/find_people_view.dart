@@ -1,6 +1,5 @@
 import 'package:chat_getx/controllers/users_list_controller.dart';
 import 'package:chat_getx/theme/app_theme.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -27,9 +26,12 @@ class FindPeopleView extends GetView<UsersListController> {
               return ListView.separated(
                   itemBuilder: (context, index) {
                     final user = controller.filteredUsers[index];
+
                     return UserListItem(
                         user: user,
-                        onTap: () => controller.handleRelationshipAction(user),
+                        onTap: () {
+                          controller.handleRelationshipAction(user);
+                        },
                         controller: controller);
                   },
                   separatorBuilder: (context, index) {
@@ -58,7 +60,7 @@ class FindPeopleView extends GetView<UsersListController> {
         ),
       ),
       child: TextField(
-        onChanged: controller.updateSearchQuery,
+        onChanged: (value) => controller.updateSearchQuery(value),
         decoration: InputDecoration(
           hintText: 'Search people',
           prefixIcon: const Icon(

@@ -23,6 +23,7 @@ class AuthController extends GetxController {
   void onInit() {
     super.onInit();
     _user.bindStream(_authService.authStateChanges);
+    // _user.value = _authService.currentUser;
     ever(_user, _handleAuthStateChange);
   }
 
@@ -38,7 +39,10 @@ class AuthController extends GetxController {
   }
 
   void checkInitialAuthState() {
-    final currentUser = FirebaseAuth.instance.currentUser;
+    final currentUser =
+        // _authService.currentUser;
+        FirebaseAuth.instance.currentUser;
+    print('____________________________________$currentUser');
     if (currentUser != null) {
       _user.value = currentUser;
       Get.offAllNamed(AppRoutes.main);

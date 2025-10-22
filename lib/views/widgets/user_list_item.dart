@@ -3,7 +3,7 @@ import 'package:chat_getx/models/user_model.dart';
 import 'package:chat_getx/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
+// import 'package:get/get_connect/http/src/utils/utils.dart';
 
 class UserListItem extends StatelessWidget {
   final UserModel user;
@@ -73,16 +73,29 @@ class UserListItem extends StatelessWidget {
                 Column(
                   children: [
                     _buildActionButton(relationshipStatus),
-                    if(relationshipStatus == UserRelationshipStatus.friendRequestReceived)...[SizedBox(height: 4,),OutlinedButton.icon(
-                      onPressed: () => controller.declineFriendRequest(user),label: Text('Decline',style: TextStyle(fontSize: 10),),
-                      icon: Icon(Icons.close,size: 14,),
-                      style: OutlinedButton.styleFrom(
-                        foregroundColor: Colors.redAccent,
-                        side: BorderSide(color: Colors.redAccent),
-                        padding: EdgeInsets.symmetric(horizontal: 4,vertical: 8),
-                        minimumSize: Size(0,24)
+                    if (relationshipStatus ==
+                        UserRelationshipStatus.friendRequestReceived) ...[
+                      const SizedBox(
+                        height: 4,
                       ),
-                    )]
+                      OutlinedButton.icon(
+                        onPressed: () => controller.declineFriendRequest(user),
+                        label: const Text(
+                          'Decline',
+                          style: TextStyle(fontSize: 10),
+                        ),
+                        icon: const Icon(
+                          Icons.close,
+                          size: 14,
+                        ),
+                        style: OutlinedButton.styleFrom(
+                            foregroundColor: Colors.redAccent,
+                            side: const BorderSide(color: Colors.redAccent),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 4, vertical: 8),
+                            minimumSize: const Size(0, 24)),
+                      )
+                    ]
                   ],
                 )
               ],

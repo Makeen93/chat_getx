@@ -160,7 +160,7 @@ class FriendRequestView extends GetView<FriendRequestsController> {
 
   Widget _buildSentRequestsTab() {
     return Obx(() {
-      if (controller.receivedRequests.isEmpty) {
+      if (controller.sentRequests.isEmpty) {
         return _buildEmptyState(
           icon: Icons.inbox_outlined,
           title: 'No Sent Requests',
@@ -176,7 +176,7 @@ class FriendRequestView extends GetView<FriendRequestsController> {
         ),
         itemBuilder: (context, index) {
           final request = controller.sentRequests[index];
-          final receiver = controller.getUser(request.senderId);
+          final receiver = controller.getUser(request.receiverId);
           if (receiver == null) {
             return const SizedBox.shrink();
           }

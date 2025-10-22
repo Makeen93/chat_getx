@@ -19,7 +19,7 @@ class FriendsController extends GetxController {
   final RxList<UserModel> _filteredFriends = <UserModel>[].obs;
 
   StreamSubscription? _friendshipSubscriptions;
-  List<FriendshipModel> get friendships => _friendships;
+  List<FriendshipModel> get friendships => _friendships.toList();
   List<UserModel> get filteredFriends => _filteredFriends;
   List<UserModel> get friends => _friends;
   bool get isLoading => _isLoading.value;
@@ -66,9 +66,11 @@ class FriendsController extends GetxController {
         String friendId = friendship.getOtherUserId(currentUserId);
         return await _fireStoreService.getUser(friendId);
       }).toList();
-      final result = await Future.wait(futures);
-      for (var friend in friends) {
-        friendUsers.add(friend);
+      final results = await Future.wait(futures);
+      for (var friend in results) {
+        if (friend != null) {
+          friendUsers.add(friend);
+        }
       }
       _friends.value = friendUsers;
       _filtereFriends();

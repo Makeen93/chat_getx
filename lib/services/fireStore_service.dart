@@ -136,7 +136,7 @@ class FireStoreService {
         'respondedAt': DateTime.now().millisecondsSinceEpoch,
       });
       DocumentSnapshot requestDoc =
-          await _firestore.collection('friendRequests').doc('requestId').get();
+          await _firestore.collection('friendRequests').doc(requestId).get();
       if (requestDoc.exists) {
         FriendRequestModel request = FriendRequestModel.fromMap(
             requestDoc.data() as Map<String, dynamic>);
@@ -173,7 +173,7 @@ class FireStoreService {
   Stream<List<FriendRequestModel>> getFriendRequestsStream(String userId) {
     return _firestore
         .collection('friendRequests')
-        .where('reciverId', isEqualTo: userId)
+        .where('receiverId', isEqualTo: userId)
         .where('status', isEqualTo: 'pending')
         .orderBy('createdAt', descending: true)
         .snapshots()
@@ -203,7 +203,7 @@ class FireStoreService {
       QuerySnapshot query = await _firestore
           .collection('friendRequests')
           .where('senderId', isEqualTo: senderId)
-          .where('reciverId', isEqualTo: receiverId)
+          .where('receiverId', isEqualTo: receiverId)
           .where('status', isEqualTo: 'pending')
           .get();
 

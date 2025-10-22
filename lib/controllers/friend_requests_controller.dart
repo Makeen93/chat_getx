@@ -17,8 +17,8 @@ class FriendRequestsController extends GetxController {
   final RxString _error = ''.obs;
   final RxInt _selectedTabIndex = 0.obs;
 
-  List<FriendRequestModel> get receivedRequests => _receivedRequests.toList();
-  List<FriendRequestModel> get sentRequests => _sentRequests.toList();
+  List<FriendRequestModel> get receivedRequests => _receivedRequests;
+  List<FriendRequestModel> get sentRequests => _sentRequests;
   bool get isLoading => _isLoading.value;
   String get error => _error.value;
   int get selectedTabIndex => _selectedTabIndex.value;
@@ -51,7 +51,7 @@ class FriendRequestsController extends GetxController {
       return userMap;
     }));
   }
-
+ 
   void changeTab(int index) {
     _selectedTabIndex.value = index;
   }

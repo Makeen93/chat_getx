@@ -20,7 +20,7 @@ enum UserRelationshipStatus {
 
 class UsersListController extends GetxController {
   final FireStoreService _fireStoreService = FireStoreService();
-  final AuthController _authController = AuthController();
+  final AuthController _authController = Get.find<AuthController>();
   final Uuid _uuid = const Uuid();
 
   final RxList<UserModel> _users = <UserModel>[].obs;
@@ -108,9 +108,12 @@ class UsersListController extends GetxController {
           (request.user1Id == userId && request.user2Id == currentUserId),
     );
     if (friendship != null) {
-      if (friendship.isBlocked) return UserRelationshipStatus.blocked;
-    } else
-      return UserRelationshipStatus.friends;
+      if (friendship.isBlocked) {
+        return UserRelationshipStatus.blocked;
+      } else {
+        return UserRelationshipStatus.friends;
+      }
+    }
     final sentRequest = _sentRequests.firstWhereOrNull(
       (request) =>
           request.status == FriendRequesStatus.pending &&
@@ -121,12 +124,14 @@ class UsersListController extends GetxController {
       return UserRelationshipStatus.friendRequestSent;
     }
 
-    final receivedRequest = _receivedRequests.firstWhere(
+    final receivedRequest = _receivedRequests.firstWhereOrNull(
       (request) =>
           request.senderId == userId &&
           request.status == FriendRequesStatus.pending,
     );
-    return UserRelationshipStatus.friendRequestReceived;
+    if (receivedRequest != null) {
+      return UserRelationshipStatus.friendRequestReceived;
+    }
     return UserRelationshipStatus.none;
   }
 
@@ -148,7 +153,7 @@ class UsersListController extends GetxController {
 
   void updateSearchQuery(String query) {
     _searchQuery.value = query;
-    // _filterUsers();
+    _filterUsers();
   }
 
   void clearSearch() {
